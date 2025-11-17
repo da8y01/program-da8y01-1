@@ -19,7 +19,8 @@ pub mod anchor_project {
     pub fn place_bid(ctx: Context<PlaceBid>, bid_amount: u64) -> Result<()> {
         _place_bid(ctx, bid_amount)
     }
-}
 
-#[derive(Accounts)]
-pub struct Initialize {}
+    pub fn end_auction(ctx: Context<EndAuction>) -> Result<()> {
+        _end_auction(ctx)
+    }
+}

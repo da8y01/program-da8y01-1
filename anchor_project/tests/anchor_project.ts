@@ -50,4 +50,18 @@ describe("anchor_project", () => {
     assert.ok(account.highestBid.toString() === '150');
     assert.ok(account.highestBidder.equals(bidder.publicKey));
   });
+
+  it('Ends the auction', async () => {
+    await program.rpc.endAuction({
+      accounts: {
+        auction: auctionAccount.publicKey,
+        owner: provider.wallet.publicKey,
+      },
+    });
+
+    const account = await program.account.auction.fetch(auctionAccount.publicKey);
+    console.log('Auction active status: ', account.isActive);
+    // The auction should no longer be active.
+    assert.ok(account.isActive === false);
+  });
 });
