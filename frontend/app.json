@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "gh:solana-foundation/templates/mobile/web3js-expo-paper",
-    "slug": "gh:solana-foundation/templates/mobile/web3js-expo-paper",
+    "name": "Auctions on-chain",
+    "slug": "auctions-on-chain",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
