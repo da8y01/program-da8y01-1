@@ -3,7 +3,7 @@ import { Cluster } from '@/components/cluster/cluster'
 import { ClusterNetwork } from '@/components/cluster/cluster-network'
 
 export class AppConfig {
-  static name = 'gh:solana-foundation/templates/mobile/web3js-expo-paper'
+  static name = 'Auctions on-chain'
   static uri = 'https://example.com'
   static clusters: Cluster[] = [
     {
