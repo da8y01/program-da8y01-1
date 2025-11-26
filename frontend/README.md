@@ -1,55 +1,88 @@
-# gh:solana-foundation/templates/mobile/web3js-expo-paper
+# Auctions on-chain (web3js-next-tailwind-basic)
 
-This is an [Expo](https://expo.dev) project created with [
-`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a Next.js app containing:
 
-## Get started
+- Tailwind CSS setup for styling
+- Useful wallet UI elements setup using [@solana/web3.js](https://www.npmjs.com/package/@solana/web3.js)
+- A basic Greeter Solana program written in Anchor
+- UI components for interacting with the Greeter program
 
-1. Install dependencies
+## Getting Started
 
-   ```bash
-   npm install
-   ```
+### Installation
 
-2. Start the app
+#### Download the template
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project
-uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```shell
+pnpm create solana-dapp@latest -t gh:solana-foundation/templates/web3js/gh:solana-foundation/templates/web3js/web3js-next-tailwind-basic
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you
-can start developing.
+#### Install Dependencies
 
-## Learn more
+```shell
+pnpm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Apps
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with
-  our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll
-  create a project that runs on Android, iOS, and the web.
+### anchor
 
-## Join the community
+This is a Solana program written in Rust using the Anchor framework.
 
-Join our community of developers creating universal apps.
+#### Commands
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+You can use any normal anchor commands. Either move to the `anchor` directory and run the `anchor` command or prefix the
+command with `pnpm`, eg: `pnpm anchor`.
+
+#### Sync the program id:
+
+Running this command will create a new keypair in the `anchor/target/deploy` directory and save the address to the
+Anchor config file and update the `declare_id!` macro in the `./src/lib.rs` file of the program.
+
+You will manually need to update the constant in `anchor/lib/counter-exports.ts` to match the new program id.
+
+```shell
+pnpm anchor keys sync
+```
+
+#### Build the program:
+
+```shell
+pnpm anchor-build
+```
+
+#### Start the test validator with the program deployed:
+
+```shell
+pnpm anchor-localnet
+```
+
+#### Run the tests
+
+```shell
+pnpm anchor-test
+```
+
+#### Deploy to Devnet
+
+```shell
+pnpm anchor deploy --provider.cluster devnet
+```
+
+### web
+
+This is a React app that uses the Anchor generated client to interact with the Solana program.
+
+#### Commands
+
+Start the web app
+
+```shell
+pnpm dev
+```
+
+Build the web app
+
+```shell
+pnpm build
+```
